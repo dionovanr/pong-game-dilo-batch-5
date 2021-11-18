@@ -11,6 +11,8 @@ public class BallControl : MonoBehaviour
     public float xInitialForce;
     public float yInitialForce;
 
+    public float forceBall;
+
     //titik asal lintasan bola
     Vector2 trajectoryOrigin;
 
@@ -32,11 +34,6 @@ public class BallControl : MonoBehaviour
         trajectoryOrigin = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void ResetBall()
     {
@@ -54,11 +51,11 @@ public class BallControl : MonoBehaviour
 
         if (randomDirection < 1.0f)
         {
-            rigidBody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce));
+            rigidBody2D.AddForce(new Vector2(-xInitialForce, yRandomInitialForce * forceBall));
         }
         else
         {
-            rigidBody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce));
+            rigidBody2D.AddForce(new Vector2(xInitialForce, yRandomInitialForce * forceBall));
         }
     }
 
